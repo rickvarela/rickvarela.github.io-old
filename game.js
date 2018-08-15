@@ -10,7 +10,7 @@ var objComp2 = new objComponet(window.innerHeight/2);
 function startGame() {
     //gameArea.start();
    // window.alert("a");
-    window.setInterval(updateGameArea, 40);
+    window.setInterval(updateGameArea, 20);
     this.canvas = document.getElementById("gameCanvas");
     this.canvas.addEventListener('touchmove', function(e) {
         tMove(e);
@@ -84,7 +84,7 @@ function objComponet(objY) {
     this.objX = window.innerWidth / 2 -10;
     this.update = function () {
         
-        this.objY += 4;
+        this.objY += 8;
         if(this.objY > window.innerHeight + 50) {
             this.objY = 0
             this.objWidth = getRandomArbitrary(40, window.innerWidth / 2)
