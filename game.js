@@ -14,6 +14,7 @@ function startGame() {
     this.canvas = document.getElementById("gameCanvas");
     this.canvas.addEventListener('touchmove', function(e) {
         tMove(e);
+        e.preventDefault();
     }, false);
 }
 
