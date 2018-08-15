@@ -84,7 +84,7 @@ function objComponet(objY) {
     this.objX = window.innerWidth / 2 -10;
     this.update = function () {
         
-        this.objY += 2;
+        this.objY += 4;
         if(this.objY > window.innerHeight + 50) {
             this.objY = 0
             this.objWidth = getRandomArbitrary(40, window.innerWidth / 2)
