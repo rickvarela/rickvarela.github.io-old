@@ -6,11 +6,13 @@ var controlY = window.innerHeight * 0.85;
 var controller = new controlComponet();
 var objComp = new objComponet(0);
 var objComp2 = new objComponet(window.innerHeight/2);
+var count = 0;
+var bob
 
 function startGame() {
     //gameArea.start();
    // window.alert("a");
-    window.setInterval(updateGameArea, 20);
+    bob = setInterval(updateGameArea, 20);//20
     this.canvas = document.getElementById("gameCanvas");
     this.canvas.addEventListener('touchmove', function(e) {
         tMove(e);
@@ -45,8 +47,15 @@ function controlComponet() {
         
         if(this.y > window.innerHeight + 100){
             
-            window.alert("you loose!");
-            window.location.reload();
+            //window.alert("you lose!");
+            //window.location.reload();
+            clearInterval(bob);
+            document.getElementById("message").innerHTML = "Total Score: " + (count + 1).toString() + "<br>Tap To Reset";
+            document.getElementById("message").style.visibility = 'visible';
+            
+            document.getElementById("message").addEventListener("click", function (e) {
+                                                                window.location.reload();
+                                                                })
 }
         
         
@@ -69,8 +78,18 @@ function controlComponet() {
         var crash = false;
         if (mybottom > othertop && myright > otherleft && myleft < otherright && mytop < otherbottom && this.gravitySpeed > 0) {
             crash = true;
+        } else if (mytop < otherbottom && myright > otherleft && myleft < otherright && mybottom > othertop && this.gravitySpeed < 0) {
+           this.y = otherbottom;
+           if (this.gravitySpeed >= -8){
+               //this.y = otherbottom;
+               this.gravitySpeed = -8;
+           }
+            crash = true; 
+            //this.bounce();
+            //window.alert("bob");
         }
         return crash;
+        
     };
     this.bounce = function() {
         this.gravitySpeed = this.gravitySpeed * -1;
@@ -85,11 +104,11 @@ function objComponet(objY) {
     this.update = function () {
         
         this.objY += 8;
-        if(this.objY > window.innerHeight + 50) {
-            this.objY = 0
-            this.objWidth = getRandomArbitrary(40, window.innerWidth / 2)
-            this.objX = getRandomArbitrary(0, window.innerWidth - this.objWidth)
-        };
+        if(this.objY > window.innerHeight + 100) {
+            this.objY = 0;
+            this.objWidth = getRandomArbitrary(40, window.innerWidth / 2);
+            this.objX = getRandomArbitrary(0, window.innerWidth - this.objWidth);
+        }
         this.canvas = document.getElementById("gameCanvas");
         this.ctx = this.canvas.getContext('2d');
         this.ctx.fillStyle = this.objColor;
@@ -101,15 +120,17 @@ function updateGameArea() {
     
     if(controller.crashWith(objComp2)) {
         controller.bounce();
-    };
+    }
   if(controller.crashWith(objComp)) {
     controller.bounce();
-  };
+  }
     
     gameArea.clear();
     controller.update();
     objComp.update();
     objComp2.update();
+    count++;
+    document.getElementById("counter").innerHTML = count;
     
 }
 function getRandomArbitrary(min, max) {

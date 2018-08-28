@@ -14,3 +14,24 @@ CANVAS {
     background-color: aliceblue;
     display: block;
 }
+P {
+    position: absolute;
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+}
+div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+#message {
+    bottom: 0;
+    background-color: white;
+    white-space: nowrap;
+    text-align: center;
+    border: 5px solid blue;
+}
+#reset {
+    text-align: center;
+}
