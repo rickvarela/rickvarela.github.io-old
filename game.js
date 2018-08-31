@@ -139,9 +139,9 @@ function updateGameArea() {
     count++;
     document.getElementById("counter").innerHTML = count;
     
-    if (count % 1000 == 0) {
-        objComp.objSpeed += 1;
-        objComp2.objSpeed += 1;
+    if (count % 500 == 0) {
+        objComp.objSpeed += 2;
+        objComp2.objSpeed += 2;
         }
     
 }
