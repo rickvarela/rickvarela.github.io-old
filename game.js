@@ -107,9 +107,10 @@ function objComponet(objY) {
     this.objColor = 'green';
     this.objY = objY;
     this.objX = window.innerWidth / 2 -10;
+    this.objSpeed = 8;
     this.update = function () {
         
-        this.objY += 8;
+        this.objY += this.objSpeed;
         if(this.objY > window.innerHeight + 100) {
             this.objY = 0;
             this.objWidth = getRandomArbitrary(40, window.innerWidth / 2);
@@ -137,6 +138,11 @@ function updateGameArea() {
     objComp2.update();
     count++;
     document.getElementById("counter").innerHTML = count;
+    
+    if (count % 1000 == 0) {
+        objComp.objSpeed += 1;
+        objComp2.objSpeed += 1;
+        }
     
 }
 function getRandomArbitrary(min, max) {
