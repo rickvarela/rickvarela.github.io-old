@@ -8,11 +8,12 @@ var objComp = new objComponet(0);
 var objComp2 = new objComponet(window.innerHeight/2);
 var count = 0;
 var bob
+var bounceCount = 0;
 
 function startGame() {
     //gameArea.start();
    // window.alert("a");
-    bob = setInterval(updateGameArea, 20);//20
+    bob = window.setInterval(updateGameArea, 20);//20
     this.canvas = document.getElementById("gameCanvas");
     this.canvas.addEventListener('touchmove', function(e) {
         tMove(e);
@@ -49,7 +50,8 @@ function controlComponet() {
             
             //window.alert("you lose!");
             //window.location.reload();
-            clearInterval(bob);
+           
+            window.clearInterval(bob);
             document.getElementById("message").innerHTML = "Total Score: " + (count + 1).toString() + "<br>Tap To Reset";
             document.getElementById("message").style.visibility = 'visible';
             
@@ -93,8 +95,12 @@ function controlComponet() {
     };
     this.bounce = function() {
         this.gravitySpeed = this.gravitySpeed * -1;
+        
     };
 }
+
+
+
 function objComponet(objY) {
     this.objWidth = 200;
     this.objHeight = 10;
