@@ -24,7 +24,7 @@ function startGame() {
 var gameArea = {
     
     clear : function () {
-
+;
         this.canvas = document.getElementById("gameCanvas");
         this.ctx = this.canvas.getContext('2d');
         this.canvas.width = this.canvas.offsetWidth;
@@ -38,7 +38,7 @@ var gameArea = {
 function controlComponet() {
     this.controlWidth = 40;
     this.controlHeight = 40;
-    this.controlColor = 'red';
+    this.controlColor = 'orange';
     this.y = 100;
     this.gravity = 1;
     this.gravitySpeed = 0;
@@ -64,6 +64,10 @@ function controlComponet() {
         this.canvas = document.getElementById("gameCanvas");
         this.ctx = this.canvas.getContext('2d');
         this.ctx.fillStyle = this.controlColor;
+        this.ctx.shadowBlur = 50;
+        this.ctx.shadowColor = 'black';
+        this.ctx.shadowOffsetX = 5;
+        this.ctx.shadowOffsetY = 5;
         this.ctx.fillRect(controlX, controlY, this.controlWidth, this.controlHeight);
         this.ctx.fillRect(controlX, this.y, this.controlWidth, this.controlHeight);
     };
@@ -102,9 +106,12 @@ function controlComponet() {
 
 
 function objComponet(objY) {
+    
+    
+    
     this.objWidth = 200;
     this.objHeight = 10;
-    this.objColor = 'green';
+    this.objColor = 'white';
     this.objY = objY;
     this.objX = window.innerWidth / 2 -10;
     this.objSpeed = 8;
@@ -119,6 +126,10 @@ function objComponet(objY) {
         this.canvas = document.getElementById("gameCanvas");
         this.ctx = this.canvas.getContext('2d');
         this.ctx.fillStyle = this.objColor;
+        this.ctx.shadowBlur = 50;
+        this.ctx.shadowColor = 'black';
+        this.ctx.shadowOffsetX = 5;
+        this.ctx.shadowOffsetY = 5;
         this.ctx.fillRect(this.objX, this.objY, this.objWidth, this.objHeight)
     };
 }
